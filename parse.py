@@ -1,13 +1,11 @@
 import argparse
 import time
 from selenium import webdriver
-from selenium.webdriver.support.ui import WebDriverWait       
 from selenium.webdriver.common.by import By       
-from selenium.webdriver.support import expected_conditions as EC
 import selenium.common.exceptions
 import time, datetime, platform
 from fund import Fund
-from utils import get_arguments
+from utils import get_arguments, export_to_csv
 
 fund_types = ["Altın", "Borçlanma Araçları", "Değişken", "Endeks", "Eurobond", "Hisse Senedi", "Katılım"]
 
@@ -28,9 +26,9 @@ def parse_fund_type(browser, fund_type, best_of=5):
             break
 
     browser.execute_script("__doPostBack('ctl00$MainContent$GridViewFundReturn','Sort$GETIRI1A')")
-    time.sleep(3)
+    time.sleep(3) # Quick hack
     browser.execute_script("__doPostBack('ctl00$MainContent$GridViewFundReturn','Sort$GETIRI1A')")
-    time.sleep(3)
+    time.sleep(3) # Quick hack
     fund_table = browser.find_element_by_id("MainContent_GridViewFundReturn")
     rows = fund_table.find_elements(By.TAG_NAME,"tr")
     fund_elements = rows[1:best_of + 1]
@@ -74,5 +72,4 @@ if __name__ == "__main__":
 
     for fund_type in fund_types:
         best_funds = best_funds_all[fund_type]
-        for fund in best_funds:
-            print(fund.name)
+        export_to_csv(fund_type, best_funds)
