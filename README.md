@@ -19,7 +19,13 @@ Kod kaliteli olmaktan çok uzakta şu an. Daha temiz hale getirmek isteyen arkad
 Sadece Selenium'a ihtiyacınız var.
 
 ```
-pip install selenium
+pip3 install selenium
+```
+
+## Nasıl Çalıştırırım
+
+```
+python3 parse.py
 ```
 
 ## Driver versiyonları
