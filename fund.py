@@ -10,3 +10,10 @@ class Fund:
         self.one_year = one_year
         self.three_years = three_years
         self.five_years = five_years
+
+    def as_row(self):
+        return '{},{},{},{},{},{},{},{},{},{}\n'.format(
+            self.code, self.name, self.fund_type, \
+            self.one_month, self.three_months,\
+            self.six_months, self.from_new_year,\
+            self.one_year, self.three_years, self.five_years)
