@@ -74,3 +74,5 @@ if __name__ == "__main__":
     for fund_type in fund_types:
         best_funds = best_funds_all[fund_type]
         export_to_csv(fund_type, best_funds)
+    
+    browser.quit()
