@@ -14,6 +14,14 @@ Kategoriler:
 
 Kod kaliteli olmaktan çok uzakta şu an. Daha temiz hale getirmek isteyen arkadaşlar olur PR yollayabilir.
 
+## Bağımlılıklar (Dependencies)
+
+Sadece Selenium'a ihtiyacınız var.
+
+```
+pip install selenium
+```
+
 ## Driver versiyonları
 
 Default olarak repo'da bulunan Chrome versiyonu Linux, Windows ve Mac için 85.0.4183
