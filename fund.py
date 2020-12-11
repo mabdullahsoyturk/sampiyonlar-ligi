@@ -1,8 +1,8 @@
 class Fund:
-    def __init__(self, code, name, type, one_month, three_months, six_months, from_new_year, one_year, three_years, five_years):
+    def __init__(self, code, name, fund_type, one_month, three_months, six_months, from_new_year, one_year, three_years, five_years):
         self.code = code
         self.name = name
-        self.type = type
+        self.fund_type = fund_type
         self.one_month = one_month
         self.three_months = three_months
         self.six_months = six_months

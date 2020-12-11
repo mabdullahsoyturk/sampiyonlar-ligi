@@ -25,10 +25,11 @@ def parse_fund_type(browser, fund_type, best_of=5):
             option.click()
             break
 
+    time.sleep(3) # Quick hack to wait for page to load
     browser.execute_script("__doPostBack('ctl00$MainContent$GridViewFundReturn','Sort$GETIRI1A')")
-    time.sleep(3) # Quick hack
+    time.sleep(3) # Quick hack to wait for page to load
     browser.execute_script("__doPostBack('ctl00$MainContent$GridViewFundReturn','Sort$GETIRI1A')")
-    time.sleep(3) # Quick hack
+    time.sleep(3) # Quick hack to wait for page to load
     fund_table = browser.find_element_by_id("MainContent_GridViewFundReturn")
     rows = fund_table.find_elements(By.TAG_NAME,"tr")
     fund_elements = rows[1:best_of + 1]
@@ -41,14 +42,14 @@ def parse_fund_type(browser, fund_type, best_of=5):
 
         fund_code = fund_descriptions[0].text
         fund_name = fund_descriptions[1].text
-        fund_type = fund_performances[2].text.strip()
-        one_month = fund_performances[0].text.strip()
-        three_months = fund_performances[1].text.strip()
-        six_months = fund_performances[2].text.strip()
-        from_new_year = fund_performances[3].text.strip()
-        one_year = fund_performances[4].text.strip()
-        three_years = fund_performances[5].text.strip()
-        five_years = fund_performances[6].text.strip()
+        fund_type = fund_descriptions[2].text
+        one_month = fund_performances[0].text.replace(",",".").strip()
+        three_months = fund_performances[1].text.replace(",",".").strip()
+        six_months = fund_performances[2].text.replace(",",".").strip()
+        from_new_year = fund_performances[3].text.replace(",",".").strip()
+        one_year = fund_performances[4].text.replace(",",".").strip()
+        three_years = fund_performances[5].text.replace(",",".").strip()
+        five_years = fund_performances[6].text.replace(",",".").strip()
 
         fund = Fund(fund_code, fund_name, fund_type, one_month, three_months, six_months, from_new_year, one_year, three_years, five_years)
         funds.append(fund)
