@@ -28,6 +28,7 @@ pip3 install selenium
 python3 parse.py
 ```
 
+Script default olarak her kategorinin son 1 ayda en iyi performans gösteren ilk 5 fonunu veriyor. Eğer daha fazla ya da daha azını çekmek isterseniz --best-k argümanıyla değiştirebilirsiniz.  
 ## Driver versiyonları
 
 Default olarak repo'da bulunan Chrome versiyonu Linux, Windows ve Mac için 85.0.4183
