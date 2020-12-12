@@ -37,19 +37,11 @@ def parse_fund_type(browser, fund_type, best_k):
     funds = []
     
     for fund_element in fund_elements:
-        fund_descriptions = fund_element.find_elements_by_class_name("fund-grid-item")
-        fund_performances = fund_element.find_elements_by_class_name("fund-grid-numeric")
+        descriptions = fund_element.find_elements_by_class_name("fund-grid-item")
+        performances = fund_element.find_elements_by_class_name("fund-grid-numeric")
 
-        fund_code = fund_descriptions[0].text
-        fund_name = fund_descriptions[1].text
-        fund_type = fund_descriptions[2].text
-        one_month = fund_performances[0].text.replace(",",".").strip()
-        three_months = fund_performances[1].text.replace(",",".").strip()
-        six_months = fund_performances[2].text.replace(",",".").strip()
-        from_new_year = fund_performances[3].text.replace(",",".").strip()
-        one_year = fund_performances[4].text.replace(",",".").strip()
-        three_years = fund_performances[5].text.replace(",",".").strip()
-        five_years = fund_performances[6].text.replace(",",".").strip()
+        fund_code, fund_name, fund_type = [desc.text for desc in descriptions]
+        one_month, three_months, six_months, from_new_year, one_year, three_years, five_years = [perf.text.replace(",",".").strip() for perf in performances]
 
         fund = Fund(fund_code, fund_name, fund_type, one_month, three_months, six_months, from_new_year, one_year, three_years, five_years)
         funds.append(fund)
