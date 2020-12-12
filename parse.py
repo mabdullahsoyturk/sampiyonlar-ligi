@@ -18,6 +18,12 @@ def launch_browser(driver_path):
     browser.maximize_window()
     return browser
 
+def sort_descending_order(browser):
+    time.sleep(3) # Quick hack to wait for page to load
+    browser.execute_script("__doPostBack('ctl00$MainContent$GridViewFundReturn','Sort$GETIRI1A')")
+    time.sleep(3) # Quick hack to wait for page to load
+    browser.execute_script("__doPostBack('ctl00$MainContent$GridViewFundReturn','Sort$GETIRI1A')")
+
 def parse_fund_type(browser, fund_type, best_k):
     select = browser.find_element_by_id('MainContent_DropDownListFundTypeExplanation')
     for option in select.find_elements_by_tag_name('option'):
@@ -25,10 +31,6 @@ def parse_fund_type(browser, fund_type, best_k):
             option.click()
             break
 
-    time.sleep(3) # Quick hack to wait for page to load
-    browser.execute_script("__doPostBack('ctl00$MainContent$GridViewFundReturn','Sort$GETIRI1A')")
-    time.sleep(3) # Quick hack to wait for page to load
-    browser.execute_script("__doPostBack('ctl00$MainContent$GridViewFundReturn','Sort$GETIRI1A')")
     time.sleep(3) # Quick hack to wait for page to load
     fund_table = browser.find_element_by_id("MainContent_GridViewFundReturn")
     rows = fund_table.find_elements(By.TAG_NAME,"tr")
@@ -50,6 +52,7 @@ def parse_fund_type(browser, fund_type, best_k):
 
 def parse_fund_types(browser, best_k):
     best_funds_all = {}
+    sort_descending_order(browser)
 
     for fon_type in fund_types:
         best_funds = parse_fund_type(browser, fon_type, best_k)
