@@ -12,8 +12,6 @@ Kategoriler:
 * Hisse Senedi
 * Katılım
 
-Kod kaliteli olmaktan çok uzakta şu an. Daha temiz hale getirmek isteyen arkadaşlar olur PR yollayabilir.
-
 ## Bağımlılıklar (Dependencies)
 
 Sadece Selenium'a ihtiyacınız var.
